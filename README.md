@@ -16,19 +16,19 @@ Platform e-commerce full-stack untuk UMKM CIPAS (CIwaruga PAngan Sehat) - menyed
 <summary>Klik untuk lihat screenshot</summary>
 
 ### Homepage & Katalog Produk
-![Homepage](docs/screenshots/homepage.png)
+![Homepage](docs/screenshots/homepage.PNG)
 *Halaman utama dengan carousel produk unggulan*
 
 ### Form Pemesanan dengan Map
-![Order Form](docs/screenshots/order-form.png)
+![Order Form](docs/screenshots/order-form.PNG)
 *Form pemesanan dengan validasi real-time dan radius pengiriman*
 
 ### Admin Dashboard
-![Admin Dashboard](docs/screenshots/admin-dashboard.png)
+![Admin Dashboard](docs/screenshots/admin-dashboard.PNG)
 *Dashboard admin dengan statistik dan analytics*
 
 ### Manajemen Produk
-![Product Management](docs/screenshots/product-management.png)
+![Product Management](docs/screenshots/product-management.PNG)
 *Upload dan kelola produk dengan gambar*
 
 </details>
