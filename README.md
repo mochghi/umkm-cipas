@@ -1,6 +1,37 @@
 ﻿# UMKM CIPAS — Sistem E-Commerce Sayuran Segar
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen.svg)
+![Express](https://img.shields.io/badge/express-4.21.2-lightgrey.svg)
+![Vite](https://img.shields.io/badge/vite-5.4.21-646CFF.svg)
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+
 Platform e-commerce full-stack untuk UMKM CIPAS (CIwaruga PAngan Sehat) - menyediakan sayuran segar berkualitas dengan sistem pemesanan online.
+
+> 🌱 **Live Demo**: [Coming Soon - Deploy in Progress]
+
+## 📸 Screenshots
+
+<details>
+<summary>Klik untuk lihat screenshot</summary>
+
+### Homepage & Katalog Produk
+![Homepage](docs/screenshots/homepage.png)
+*Halaman utama dengan carousel produk unggulan*
+
+### Form Pemesanan dengan Map
+![Order Form](docs/screenshots/order-form.png)
+*Form pemesanan dengan validasi real-time dan radius pengiriman*
+
+### Admin Dashboard
+![Admin Dashboard](docs/screenshots/admin-dashboard.png)
+*Dashboard admin dengan statistik dan analytics*
+
+### Manajemen Produk
+![Product Management](docs/screenshots/product-management.png)
+*Upload dan kelola produk dengan gambar*
+
+</details>
 
 ## 🚀 Fitur Utama
 
@@ -266,7 +297,30 @@ dist
 
 MIT License - feel free to use for your own UMKM projects!
 
+See [LICENSE](LICENSE) file for details.
+
+## 🌟 Show Your Support
+
+Give a ⭐️ if this project helped you!
+
 ## 👥 Contact
+
+UMKM CIPAS - Ciwaruga, Bandung
+
+- 🌐 Website: https://github.com/mochghi/umkm-cipas
+- 📧 Email: umkmcipas@example.com
+- 📱 WhatsApp: +62 800 0000 000
+
+---
+
+**Made with ❤️ for Indonesian UMKM**
+
+---
+
+**⚠️ Important Notes:**
+- Data saat ini tersimpan di memory (hilang saat restart)
+- Untuk production: migrasi ke database & ubah credentials default
+- Backup data produk & pesanan secara berkala
 
 UMKM CIPAS - Ciwaruga, Bandung
 - Website: [Coming Soon]
