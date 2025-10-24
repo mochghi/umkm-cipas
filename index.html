@@ -1,0 +1,371 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UMKM CIPAS — Segar dari Kebun</title>
+    <meta name="description" content="UMKM CIPAS (CIwaruga PAngan Sehat) - Inisiatif petani Ciwaruga menyediakan sayuran segar berkualitas. Pesan online, antar langsung ke rumah Anda.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+        crossorigin="" />
+  <!-- Leaflet Routing CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- NProgress -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+  
+  <!-- External Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+  <!-- Leaflet Routing JavaScript -->      
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+  <!-- App Scripts -->
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/catalog.js"></script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-grid">
+      <div class="brand">
+        <img src="assets/images/logo.svg" alt="UMKM CIPAS logo" class="logo" width="64" height="64" />
+        <div>
+          <h1>UMKM CIPAS</h1>
+          <p class="tag" id="tagline">Sayuran Segar & Terpercaya</p>
+        </div>
+      </div>
+      <nav class="nav" role="navigation" aria-label="Menu utama">
+        <a href="#home" aria-current="page">Home</a>
+        <a href="#produk">Produk</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak" class="primary">Pesan Sekarang</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+          <h2>Sayuran Segar Langsung dari Petani</h2>
+          <p>Dukungan untuk petani lokal dan pasokan harian sehingga Anda mendapatkan sayuran yang lebih segar, sehat, dan hemat.</p>
+          <div class="cta-row">
+            <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+            <a href="#kontak" class="btn btn-outline">Hubungi Kami</a>
+          </div>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+          <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" rx="12" fill="#E8F6E9" />
+            <g transform="translate(40,40)">
+              <ellipse cx="120" cy="150" rx="120" ry="60" fill="#CFF0C8" />
+              <g transform="translate(20,20)">
+                <rect x="0" y="40" width="180" height="110" rx="12" fill="#73C66B" />
+                <rect x="10" y="10" width="160" height="40" rx="8" fill="#FFF" opacity="0.85" />
+                <circle cx="40" cy="70" r="18" fill="#FFD966" />
+                <circle cx="80" cy="70" r="14" fill="#FFD966" />
+                <rect x="30" y="100" width="120" height="10" rx="5" fill="#3C3C3C" opacity="0.18" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="produk" id="produk">
+      <div class="container">
+        <h3>Produk Unggulan</h3>
+        <p class="muted">Pilihan sayuran segar, dikemas rapi, siap antar.</p>
+        <div class="products-carousel">
+          <button class="carousel-btn prev" aria-label="Sebelumnya">‹</button>
+          <div class="card-grid" tabindex="0" role="list">
+          <article class="card" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/images/veg1.svg" alt="Bayam Organik" loading="lazy" />
+            <h4>Bayam Organik</h4>
+            <div class="price-badge">Rp 6.000 / ikat</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Bayam Organik')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="150">
+            <img src="assets/images/veg2.svg" alt="Sawi Hijau" loading="lazy" />
+            <h4>Sawi Hijau</h4>
+            <div class="price-badge">Rp 5.000 / ikat</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Sawi Hijau')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="200">
+            <img src="assets/images/veg3.svg" alt="Tomat Merah" loading="lazy" />
+            <h4>Tomat Merah</h4>
+            <div class="price-badge">Rp 12.000 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Tomat Merah')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="250">
+            <img src="assets/images/veg1.svg" alt="Selada Segar" loading="lazy" />
+            <h4>Selada Segar</h4>
+            <div class="price-badge">Rp 8.000 / kepala</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Selada Segar')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="300">
+            <img src="assets/images/veg2.svg" alt="Kangkung" loading="lazy" />
+            <h4>Kangkung</h4>
+            <div class="price-badge">Rp 4.500 / ikat</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Kangkung')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="350">
+            <img src="assets/images/veg3.svg" alt="Cabai Merah" loading="lazy" />
+            <h4>Cabai Merah</h4>
+            <div class="price-badge">Rp 30.000 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Cabai Merah')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="400">
+            <img src="assets/images/veg1.svg" alt="Bawang Merah" loading="lazy" />
+            <h4>Bawang Merah</h4>
+            <div class="price-badge">Rp 25.000 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Bawang Merah')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="450">
+            <img src="assets/images/veg2.svg" alt="Wortel" loading="lazy" />
+            <h4>Wortel</h4>
+            <div class="price-badge">Rp 10.000 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Wortel')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="500">
+            <img src="assets/images/veg3.svg" alt="Kentang" loading="lazy" />
+            <h4>Kentang</h4>
+            <div class="price-badge">Rp 9.000 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Kentang')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+
+          <article class="card" data-aos="fade-up" data-aos-delay="550">
+            <img src="assets/images/veg1.svg" alt="Timun" loading="lazy" />
+            <h4>Timun</h4>
+            <div class="price-badge">Rp 6.500 / kg</div>
+            <div class="actions">
+              <a class="btn btn-sm btn-primary" href="#kontak" onclick="selectProduct('Timun')">Pesan</a>
+              <a class="btn btn-sm btn-outline" href="#produk" aria-label="Detail produk">Detail</a>
+            </div>
+          </article>
+          </div>
+          <button class="carousel-btn next" aria-label="Berikutnya">›</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="tentang">
+      <div class="container about-grid">
+        <div>
+          <h3>Tentang UMKM CIPAS</h3>
+            <p><strong>CIPAS</strong> (CIwaruga PAngan Sehat) adalah inisiatif dari para petani lokal di kawasan Ciwaruga untuk menyediakan bahan pangan sehat dan berkualitas. Kami bekerja sama dengan petani lokal untuk menyediakan sayuran dengan kualitas terbaik. Pengiriman harian memastikan kesegaran sampai ke meja Anda.</p>
+          <ul>
+            <li>Produk organik pilihan</li>
+            <li>Dukungan untuk petani lokal</li>
+            <li>Pengemasan aman & ramah lingkungan</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visi</h4>
+          <p>Menjadi penyedia sayuran segar terpercaya di wilayah kami.</p>
+          <h4>Misi</h4>
+          <ol>
+            <li>Mendampingi petani lokal</li>
+            <li>Menciptakan rantai pasok yang adil</li>
+            <li>Mengutamakan kualitas dan kebersihan</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontak">
+      <div class="container">
+        <h3>Pesan & Kontak</h3>
+        <p class="muted">Isi form atau hubungi kami via WA untuk pesanan cepat.</p>
+        <div class="contact-grid">
+          <!-- Customer Email Login (required before ordering) -->
+          <div class="card" id="customerLoginCard" style="margin-bottom:1rem;">
+            <h4 style="margin-top:0;">Masuk dengan Email</h4>
+            <p class="muted" id="loginHint">Silakan masuk dengan email Anda untuk melanjutkan pemesanan.</p>
+            <form id="customerLoginForm" class="form-inline" autocomplete="email">
+              <div class="form-group">
+                <label for="customerEmail">Email</label>
+                <input type="email" id="customerEmail" name="email" required placeholder="nama@contoh.com" />
+              </div>
+              <div class="form-group">
+                <label for="customerName">Nama (opsional)</label>
+                <input type="text" id="customerName" name="name" placeholder="Nama Anda" />
+              </div>
+              <button type="submit" class="btn btn-primary" id="customerLoginBtn">Masuk</button>
+              <span class="small muted" id="loginStatus" style="margin-left:.5rem;"></span>
+            </form>
+          </div>
+
+          <form id="orderForm" role="form" aria-labelledby="formTitle">
+            <div class="form-group">
+              <label for="name" id="nameLabel">Nama</label>
+              <input type="text" 
+                     id="name" 
+                     name="name" 
+                     required 
+                     aria-required="true"
+                     aria-labelledby="nameLabel"
+                     aria-describedby="nameError"
+                     minlength="3"
+                     autocomplete="name" />
+              <div id="nameError" class="error-message" aria-live="polite"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="product" id="productLabel">Produk</label>
+              <select id="product" 
+                      name="product" 
+                      required 
+                      aria-required="true"
+                      aria-labelledby="productLabel">
+                <option value="">Pilih produk</option>
+                <option value="Bayam Organik">Bayam Organik</option>
+                <option value="Sawi Hijau">Sawi Hijau</option>
+                <option value="Tomat Merah">Tomat Merah</option>
+                <option value="Selada Segar">Selada Segar</option>
+                <option value="Kangkung">Kangkung</option>
+                <option value="Cabai Merah">Cabai Merah</option>
+                <option value="Bawang Merah">Bawang Merah</option>
+                <option value="Wortel">Wortel</option>
+                <option value="Kentang">Kentang</option>
+                <option value="Timun">Timun</option>
+                <option value="Lainnya">🔖 Lainnya (Request Produk)</option>
+              </select>
+              <div id="productError" class="error-message" aria-live="polite"></div>
+            </div>
+            
+            <div class="form-group" id="customProductGroup" style="display: none;">
+              <label for="customProduct" id="customProductLabel">Produk yang Diinginkan</label>
+              <input type="text" 
+                     id="customProduct" 
+                     name="customProduct" 
+                     placeholder="Contoh: Brokoli, Jagung Manis, dll."
+                     aria-labelledby="customProductLabel"
+                     aria-describedby="customProductError" />
+              <small class="form-hint">Sebutkan produk sayuran yang Anda inginkan</small>
+              <div id="customProductError" class="error-message" aria-live="polite"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="qty" id="qtyLabel">Jumlah</label>
+              <input type="number" 
+                     id="qty" 
+                     name="qty" 
+                     min="1" 
+                     max="100"
+                     value="1" 
+                     required 
+                     aria-required="true"
+                     aria-labelledby="qtyLabel"
+                     aria-describedby="qtyError" />
+              <div id="qtyError" class="error-message" aria-live="polite"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="address" id="addressLabel">Alamat</label>
+              <textarea id="address" 
+                        name="address" 
+                        rows="3" 
+                        required 
+                        aria-required="true"
+                        aria-labelledby="addressLabel"
+                        aria-describedby="addressError"
+                        minlength="10"
+                        autocomplete="street-address"></textarea>
+              <div id="addressError" class="error-message" aria-live="polite"></div>
+            </div>
+            
+            <div class="form-group">
+              <button class="btn btn-primary" 
+                      type="submit" 
+                      id="submitOrder"
+                      aria-label="Kirim pesanan">
+                <span class="button-text">Kirim Pesanan</span>
+              </button>
+            </div>
+            
+            <p class="muted small">
+              Atau hubungi: 
+              <a href="tel:+628000000000" 
+                 aria-label="Telepon kami di +62 800 0000 000">
+                +62 800 0000 000
+              </a>
+            </p>
+          </form>
+
+          <div class="map-container">
+            <div id="map"></div>
+            <div class="delivery-info">
+              <h4>Informasi Pengiriman</h4>
+              <div class="delivery-status" id="deliveryStatus">
+                <p>Masukkan alamat untuk cek area pengiriman</p>
+              </div>
+              <div class="legend">
+                <div class="legend-item">
+                  <span class="dot green"></span>
+                  <span>Area Pengiriman (Radius 10km)</span>
+                </div>
+                <div class="legend-item">
+                  <span class="dot red"></span>
+                  <span>Lokasi Toko</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> UMKM CIPAS • Semua hak dilindungi</p>
+    </div>
+  </footer>
+
+
+</body>
+</html>

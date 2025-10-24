@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="16" fill="#E8F6E9"/>
+  <g fill="none" stroke="#19692d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(20,20)">
+    <path d="M10 60 C18 30, 60 18, 80 6" opacity="0.9" />
+    <path d="M8 72 C18 46, 60 34, 80 30" opacity="0.6" />
+  </g>
+  <text x="12" y="100" font-family="Segoe UI, Arial" font-size="12" fill="#19692d">UMKM CIPAS</text>
+</svg>

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "bayam-org",
+    "name": "Bayam Organik",
+    "category": "Daun",
+    "price": 6000,
+    "unit": "ikat",
+    "stock": 20,
+    "image": "/assets/images/veg1.svg"
+  },
+  {
+    "id": "sawi-hijau",
+    "name": "Sawi Hijau",
+    "category": "Daun",
+    "price": 5000,
+    "unit": "ikat",
+    "stock": 35,
+    "image": "/assets/images/veg2.svg"
+  },
+  {
+    "id": "tomat-merah",
+    "name": "Tomat Merah",
+    "category": "Buah",
+    "price": 12000,
+    "unit": "kg",
+    "stock": 18,
+    "image": "/assets/images/veg3.svg"
+  },
+  {
+    "id": "selada",
+    "name": "Selada Segar",
+    "category": "Daun",
+    "price": 8000,
+    "unit": "kepala",
+    "stock": 12,
+    "image": "/assets/images/veg1.svg"
+  },
+  {
+    "id": "kangkung",
+    "name": "Kangkung",
+    "category": "Daun",
+    "price": 4500,
+    "unit": "ikat",
+    "stock": 40,
+    "image": "/assets/images/veg2.svg"
+  },
+  {
+    "id": "cabai-merah",
+    "name": "Cabai Merah",
+    "category": "Buah",
+    "price": 30000,
+    "unit": "kg",
+    "stock": 10,
+    "image": "/assets/images/veg3.svg"
+  },
+  {
+    "id": "bawang-merah",
+    "name": "Bawang Merah",
+    "category": "Umbi",
+    "price": 25000,
+    "unit": "kg",
+    "stock": 22,
+    "image": "/assets/images/veg1.svg"
+  },
+  {
+    "id": "wortel",
+    "name": "Wortel",
+    "category": "Umbi",
+    "price": 10000,
+    "unit": "kg",
+    "stock": 28,
+    "image": "/assets/images/veg2.svg"
+  },
+  {
+    "id": "kentang",
+    "name": "Kentang",
+    "category": "Umbi",
+    "price": 9000,
+    "unit": "kg",
+    "stock": 25,
+    "image": "/assets/images/veg3.svg"
+  },
+  {
+    "id": "timun",
+    "name": "Timun",
+    "category": "Buah",
+    "price": 6500,
+    "unit": "kg",
+    "stock": 30,
+    "image": "/assets/images/veg1.svg"
+  }
+]

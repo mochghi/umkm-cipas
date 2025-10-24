@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - UMKM CIPAS</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div id="loginPage" class="login-page">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="../assets/images/logo.svg" alt="UMKM CIPAS" class="login-logo">
+                <h1>Admin Dashboard</h1>
+                <p>UMKM CIPAS</p>
+            </div>
+            <form id="adminLogin" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div id="loginError" class="error-message" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/logo.svg" alt="UMKM CIPAS">
+                <h2>UMKM CIPAS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="orders">
+                    <span class="nav-icon">📦</span>
+                    <span>Pesanan</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="products">
+                    <span class="nav-icon">🛒</span>
+                    <span>Produk</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="analytics">
+                    <span class="nav-icon">📊</span>
+                    <span>Statistik</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-outline btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- Orders Section -->
+            <div id="ordersSection" class="tab-content active">
+                <header class="content-header">
+                    <div>
+                        <h1>Manajemen Pesanan</h1>
+                    </div>
+                    <div class="header-actions">
+                        <button id="exportBtn" class="btn btn-outline">
+                            <span>📥 Export CSV</span>
+                        </button>
+                        <button id="refreshBtn" class="btn btn-outline">
+                            <span>🔄 Refresh</span>
+                        </button>
+                    </div>
+                </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p class="stat-label">Pending</p>
+                    <p class="stat-value" id="statPending">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Diproses</p>
+                    <p class="stat-value" id="statProcessing">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Dikirim</p>
+                    <p class="stat-value" id="statShipped">0</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Selesai</p>
+                    <p class="stat-value" id="statCompleted">0</p>
+                </div>
+            </div>
+
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label for="statusFilter">Status:</label>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">Semua Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Diproses</option>
+                        <option value="shipped">Dikirim</option>
+                        <option value="completed">Selesai</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="dateFrom">Dari Tanggal:</label>
+                    <input type="date" id="dateFrom" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="dateTo">Sampai Tanggal:</label>
+                    <input type="date" id="dateTo" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <input type="search" id="searchInput" placeholder="Cari nama atau produk..." class="search-input">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tanggal</th>
+                            <th>Nama</th>
+                            <th>Produk</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody"></tbody>
+                </table>
+            </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="productsSection" class="tab-content">
+                <header class="content-header">
+                    <div>
+                        <h1>Manajemen Produk</h1>
+                        <p class="text-muted">Kelola katalog produk sayuran</p>
+                    </div>
+                    <button id="addProductBtn" class="btn btn-primary">
+                        <span>➕ Tambah Produk</span>
+                    </button>
+                </header>
+
+                <div class="products-grid" id="productsGrid">
+                    <div class="loading">Memuat produk...</div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analyticsSection" class="tab-content">
+                <header class="content-header">
+                    <div>
+                        <h1>Statistik & Analytics</h1>
+                        <p class="text-muted">Analisis penjualan dan performa bisnis</p>
+                    </div>
+                </header>
+
+                <!-- Summary Cards -->
+                <div class="analytics-summary">
+                    <div class="summary-card">
+                        <div class="summary-icon" style="background:#dbeafe;color:#1e40af;">📦</div>
+                        <div class="summary-details">
+                            <p class="summary-label">Total Pesanan</p>
+                            <p class="summary-value" id="totalOrders">0</p>
+                            <p class="summary-change">Semua waktu</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon" style="background:#d1fae5;color:#065f46;">✅</div>
+                        <div class="summary-details">
+                            <p class="summary-label">Pesanan Selesai</p>
+                            <p class="summary-value" id="completedOrders">0</p>
+                            <p class="summary-change" id="completionRate">0% completion rate</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon" style="background:#fef3c7;color:#b45309;">📈</div>
+                        <div class="summary-details">
+                            <p class="summary-label">Produk Terlaris</p>
+                            <p class="summary-value" id="topProduct">-</p>
+                            <p class="summary-change" id="topProductQty">0 terjual</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon" style="background:#e0e7ff;color:#5b21b6;">📅</div>
+                        <div class="summary-details">
+                            <p class="summary-label">Pesanan Hari Ini</p>
+                            <p class="summary-value" id="todayOrders">0</p>
+                            <p class="summary-change" id="todayChange">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Tren Pesanan (7 Hari Terakhir)</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="ordersChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Status Pesanan</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="statusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Products Table -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>📊 Produk Terlaris</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Ranking</th>
+                                    <th>Produk</th>
+                                    <th>Total Terjual</th>
+                                    <th>Jumlah Pesanan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="topProductsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="orderModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detail Pesanan</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="orderModalBody"></div>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Tambah Produk</h3>
+                <button class="modal-close" id="productModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm" enctype="multipart/form-data">
+                    <input type="hidden" id="productId" name="productId">
+                    
+                    <div class="form-group">
+                        <label for="productName">Nama Produk *</label>
+                        <input type="text" id="productName" name="name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Harga *</label>
+                            <input type="number" id="productPrice" name="price" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productUnit">Satuan *</label>
+                            <select id="productUnit" name="unit" required>
+                                <option value="kg">kg</option>
+                                <option value="ikat">ikat</option>
+                                <option value="buah">buah</option>
+                                <option value="ons">ons</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productStock">Stok</label>
+                            <input type="number" id="productStock" name="stock" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Kategori</label>
+                            <select id="productCategory" name="category">
+                                <option value="Sayuran Hijau">Sayuran Hijau</option>
+                                <option value="Bumbu">Bumbu</option>
+                                <option value="Umbi">Umbi</option>
+                                <option value="Buah">Buah</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Deskripsi</label>
+                        <textarea id="productDescription" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productImage">Foto Produk</label>
+                        <input type="file" id="productImage" name="image" accept="image/*">
+                        <small class="form-hint">Max 5MB (JPG, PNG, WebP)</small>
+                        <div id="imagePreview" class="image-preview hidden">
+                            <img id="previewImg" src="" alt="Preview">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" id="cancelProductBtn">Batal</button>
+                        <button type="submit" class="btn btn-primary" id="saveProductBtn">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
